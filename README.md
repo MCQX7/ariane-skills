@@ -76,6 +76,12 @@ there are no properties or descriptions to write.
 - **The official Figma connector** (Figma's MCP server), **with write access
   enabled**. Ariane always goes through it.
 - **git**, to get Ariane and its updates.
+- **A Full or Dev seat on a paid Figma plan** (Professional, Organization or
+  Enterprise), and **a file that belongs to that plan**. Figma limits calls to its
+  connector: 20 a month on the free plan (Starter) or with a View or Collab seat, 200
+  a day with a Full or Dev seat on Professional or Organization, 600 on Enterprise
+  ([Figma's limits](https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/)).
+  Ariane reads a lot: 20 calls a month aren't enough for a single component.
 - A Figma components file you can edit.
 
 ## Install

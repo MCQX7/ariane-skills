@@ -74,6 +74,12 @@ calques : il n'y a ni propriété ni description à écrire.
 - **Le connecteur Figma officiel** (le serveur MCP de Figma), **avec l'écriture
   activée**. Ariane passe toujours par lui.
 - **git**, pour récupérer Ariane et ses mises à jour.
+- **Un siège Full ou Dev sur une offre Figma payante** (Professional, Organization ou
+  Enterprise), et **un fichier qui appartient à cette offre**. Figma limite le nombre
+  d'appels à son connecteur : 20 par mois avec l'offre gratuite (Starter) ou un siège
+  View ou Collab, 200 par jour avec un siège Full ou Dev sur Professional ou
+  Organization, 600 sur Enterprise ([les limites, chez Figma](https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/)).
+  Ariane lit beaucoup : 20 appels par mois ne suffisent pas pour un seul composant.
 - Un fichier Figma de composants sur lequel tu as les droits d'édition.
 
 ## Installer
