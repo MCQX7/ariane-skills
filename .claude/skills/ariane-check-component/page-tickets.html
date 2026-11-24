@@ -68,7 +68,9 @@ document.getElementById('titre').textContent=m?(revue?'Revue des copies — ':'T
 // les notes « Pour les passes d'Ariane » (jusqu'au titre suivant) restent hors du bloc à copier ;
 // dans une revue, ce qui précède « <!-- ticket --> » est le compte rendu de la copie.
 const lignes=brut.split('\n'),blocs=[];let tete=[],cur=null;
-for(const l of lignes){if(/^## /.test(l)){cur={nom:l.slice(3).trim(),l:[]};blocs.push(cur)}else if(cur)cur.l.push(l);else tete.push(l)}
+// Un titre « ## » juste après le repère « ticket » est celui du contrôle recopié : il reste dans le même composant.
+const apresRepere=c=>{if(!c)return false;for(let j=c.l.length-1;j>=0;j--){if(c.l[j].trim())return c.l[j].trim()==='<!-- ticket -->'}return false};
+for(const l of lignes){if(/^## /.test(l)&&!apresRepere(cur)){cur={nom:l.slice(3).trim(),l:[]};blocs.push(cur)}else if(cur){if(!/^## /.test(l))cur.l.push(l)}else tete.push(l)}
 const sub=tete.join('\n').trim();
 document.getElementById('sub').innerHTML=sub?rendu(sub).replace(/^<p>|<\/p>\s*$/g,''):'';
 const nav=document.getElementById('nav'),list=document.getElementById('list');
