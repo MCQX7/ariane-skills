@@ -1,0 +1,23 @@
+---
+name: prerequis-communs
+description: "Prérequis communs aux étapes d'Ariane qui écrivent dans Figma (calques, propriétés, descriptions, construction, remplacement) — filet de sécurité, skills à jour, connecteur Figma officiel. Lu au début de chaque étape, qui y ajoute ses prérequis propres. Fichier introuvable → l'étape s'arrête."
+metadata:
+  type: reference
+---
+
+# Prérequis communs — à rappeler à l'utilisateur
+
+Une seule copie, lue au début de chaque étape d'Ariane qui écrit dans Figma
+(`ariane-rename-layers`, `ariane-rename-props`, `ariane-describe-components`, `ariane-rebuild-component`, `ariane-replace-instances`).
+Chaque étape y ajoute ses prérequis propres, dans son `SKILL.md`. Changer une
+règle ici la change pour toutes ces étapes à la fois.
+
+- **FILET DE SÉCURITÉ — BRANCHE ou HISTORIQUE DES VERSIONS, selon la cible :**
+  - **LIBRAIRIE** (fichier publié, masters consommés ailleurs) → **travailler dans une BRANCHE Figma**. Deux raisons : elle donne un **diff relisible** de l'ensemble du run, et **rien n'atteint le fichier principal avant la fusion**. ⚠️ **Revenir à une version ne protège PAS de la publication** : une fois publié, un renommage de master ou de prop est propagé à tous les consommateurs, et restaurer *ton* fichier n'y change plus rien. C'est le seul filet qui couvre ce risque.
+  - **ÉCRAN DE PROD** (fichier qui ne se propage nulle part) → **l'historique des versions** de Figma suffit : il permet de revenir à un état d'avant le run.
+  - Branche **COURTE, fusionnée vite** : un run porte des dizaines de renommages ; le diff devient vite illisible, et les conflits arrivent si le fichier principal bouge pendant ce temps.
+- **Ni branche ni version nommée ne se créent depuis une étape** : le connecteur ne sait faire ni l'une ni l'autre. La branche, c'est le designer qui la crée et en donne le lien ; un point de retour précis dans l'historique, c'est lui qui le nomme s'il le veut (Fichier › Enregistrer dans l'historique des versions), avant de lancer. Une étape ne dit jamais qu'elle a posé un filet qu'elle n'a pas posé.
+- **Appel direct d'une étape** (sans l'orchestrateur, qui pose déjà la question) : avant la **première écriture**, demander **une fois** « Si ce fichier est une librairie publiée, travailles-tu dans une branche Figma ? (sinon, l'historique des versions permet de revenir en arrière ; nomme une version si tu veux un point de retour précis) », en disant que « oui » lance les écritures de l'étape. Ce n'est pas une confirmation des changements, seulement du filet ; sans réponse, ne rien écrire.
+- **SKILLS À JOUR — `git fetch` puis `git pull --ff-only` sur le dépôt des skills AVANT le run.** Le clone local peut être en retard sur le dépôt. Une version périmée ne plante pas : elle pose en **arbitrage** ce que la version à jour tranche en **déterministe**, et fait diverger les noms d'un run à l'autre. Si le pull ramène des commits, lire le diff des `SKILL.md` et de `ariane-referentiels/` avant de reprendre.
+- **UNE ÉTAPE N'ÉCRIT DANS FIGMA QUE DANS SA CIBLE** : le lien reçu (l'écran, la planche, le master) et ce qu'il contient — pour la construction, la planche de proposition qu'elle pose et ce qu'elle y met — jamais un voisin, une autre planche, une autre copie ni un autre master du fichier, même pour une seule ligne et même si une règle de l'étape semble le demander. Ce qu'il faudrait écrire ailleurs (un renvoi dans la description d'un voisin, un nom à aligner sur un autre composant) se **signale** dans le compte rendu de l'étape, pour la passe de ce composant-là. Avant chaque script d'écriture : « chaque calque ou composant écrit est-il dans la cible ? » Si non, ne pas l'envoyer.
+- **Connecteur Figma officiel** (serveur MCP officiel de Figma, `mcp.figma.com`) avec écriture active (`use_figma`). Toutes les lectures et écritures Figma passent par lui ; n'utilise jamais un autre serveur Figma (figma-console, par exemple) pour ce que l'officiel sait faire.

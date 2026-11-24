@@ -1,0 +1,4 @@
+.DS_Store
+
+# Réglages propres à ta machine
+.claude/settings.local.json
