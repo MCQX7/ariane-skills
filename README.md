@@ -127,6 +127,21 @@ at the start of each run.
 > Ariane can't create branches or versions: it asks you to confirm the safety net is
 > in place.
 
+### Put each component in a board
+
+A corrected copy is checked board against board: the original and its copy, each in
+its own frame or section. A component placed on its own on the page, outside any
+frame, can be checked and renamed without trouble, but its copy can't go through its
+full verification. Before asking for a proposal, put the component in a frame or a
+section.
+
+### Write permissions
+
+Ariane writes its description log, and the lexicon or the project frame when you
+approve a line, in `.claude/skills/ariane-referentiels/`. Claude Code protects
+everything under `.claude/`: it asks for your approval before writing there, and a
+session run with nobody at the keyboard (`claude -p`) can't write there at all.
+
 ### Telling Ariane about your product
 
 Three files in `.claude/skills/ariane-referentiels/` belong to your project. They

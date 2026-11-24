@@ -125,6 +125,21 @@ lire ou d'écrire quoi que ce soit dans Figma.
 > Ariane ne sait créer ni branche ni version : elle te demande de confirmer que le
 > filet est en place.
 
+### Ranger chaque composant dans une planche
+
+Une copie corrigée se vérifie planche contre planche : l'original et sa copie, chacun
+dans son cadre ou sa section. Un composant posé seul sur la page, hors de tout cadre,
+se contrôle et se renomme sans problème, mais sa copie ne passe pas toute sa
+vérification. Avant de demander une proposition, range le composant dans un cadre ou
+une section.
+
+### Les autorisations d'écriture
+
+Ariane écrit son journal des descriptions, et le lexique ou le cadre quand tu valides
+une ligne, dans `.claude/skills/ariane-referentiels/`. Claude Code protège tout ce qui
+se trouve sous `.claude/` : il te demande ton accord avant d'y écrire, et une session
+lancée sans personne (`claude -p`) ne peut pas y écrire du tout.
+
 ### Raconter ton produit à Ariane
 
 Trois fichiers de `.claude/skills/ariane-referentiels/` appartiennent à ta mission.
