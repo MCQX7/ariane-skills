@@ -5,7 +5,7 @@ user-invocable: false
 ---
 
 # Figma — Renommage des layers (AI-ready)
-<!-- version: v2.21 -->
+<!-- version: v2.22 -->
 
 Nettoie la **structure** et le **nommage** des layers **éditables** (FRAME / GROUP / TEXT / formes hors instance) d'un écran ou fichier Figma, en **deux passes**, structure **toujours** avant nommage : (1) **collapse** des frames coquilles prouvées sans effet sur le rendu ; (2) **renommage** AI-ready. Ne touche **jamais** aux propriétés de composants (périmètre de `ariane-rename-props`) ni aux instances (exceptions : § Tri technique).
 
@@ -23,7 +23,7 @@ Ce skill rend ainsi lisibles les **calques éditables**, et nettoie la structure
 Lien Figma d'un écran, d'une section ou d'un fichier : `$ARGUMENTS`. Si aucun lien n'est fourni, le demander avant toute action.
 
 ## Fichiers qui font foi — introuvable → ARRÊT
-Ce skill lit des fichiers qui font foi pour leur sujet : `${CLAUDE_SKILL_DIR}/../ariane-referentiels/prerequis-communs.md`, les trois référentiels (§ Sources du vocabulaire), et, selon le cas, `board-documentation.md`, `modes-de-sortie.md`, `lot-multi-ecrans.md` et la sonde `sonde-cadres.js` (dans `${CLAUDE_SKILL_DIR}/`). **L'un d'eux introuvable ou illisible → ARRÊT, sans exception** : s'arrêter avant toute lecture ou écriture Figma (ou, pour un fichier lu en cours de run, avant d'aller plus loin), dire quel fichier manque et le chemin essayé, et rappeler que `ariane-referentiels/` s'installe à côté des skills (README, § Installation). **Ne jamais continuer sans, ni le remplacer au jugé** : le nommage divergerait d'un run à l'autre.
+Ce skill lit des fichiers qui font foi pour leur sujet : `${CLAUDE_SKILL_DIR}/../ariane-referentiels/prerequis-communs.md`, les trois référentiels (§ Sources du vocabulaire), et, selon le cas, `board-documentation.md`, `modes-de-sortie.md`, `lot-multi-ecrans.md` et la sonde `sonde-cadres.js` (dans `${CLAUDE_SKILL_DIR}/`). **L'un d'eux introuvable ou illisible → ARRÊT, sans exception** : s'arrêter avant toute lecture ou écriture Figma (ou, pour un fichier lu en cours de run, avant d'aller plus loin), dire quel fichier manque et le chemin essayé, et rappeler que `ariane-referentiels/` s'installe à côté des skills (README, installation). **Ne jamais continuer sans, ni le remplacer au jugé** : le nommage divergerait d'un run à l'autre.
 
 ## Prérequis à rappeler à l'utilisateur
 - **Lire `prerequis-communs.md`** et rappeler ce qu'il dit : filet de sécurité (branche ou historique des versions selon la cible, jamais créé par l'étape), question du filet en appel direct, skills à jour, connecteur Figma officiel. Ce fichier fait foi pour ces quatre points ; ce `SKILL.md` n'y ajoute que ce qui est propre à cette étape.
@@ -203,7 +203,7 @@ Une frame est **collapsable** si et seulement si, en la supprimant et en remonta
 - **Composant de construction (non publié)** — master dont le nom porte un marqueur `.` ou `_` : **traité normalement**, ce n'est **pas** une exclusion (calques renommés, coquilles collapsées). Le marqueur relève du nom du master (→ `ariane-rename-props`, `[[conventions-nommage]]` § « Composant de construction »).
 - **Nodes scratch** : screenshots ou rectangles collés, labels de travail (« TODO relire », « Capture d'écran… ») → `❓` ignorer.
 - **Frames en position absolue** : ni renommées d'office, ni collapsées (le collapse casserait le positionnement) → `❓`.
-- **Items répétés sans container** → `❓` ; ne **jamais** créer de container pour regrouper des frères (la v2 collapse, elle ne crée pas : hors périmètre).
+- **Items répétés sans container** → `❓` ; ne **jamais** créer de container pour regrouper des frères (ce skill collapse, il ne crée pas : hors périmètre).
 - **Détacher un composant** : interdit.
 - **Abréviation cryptique ou acronyme inconnu** des référentiels (`ABC`) → `❓`. **Ne jamais traduire ni deviner l'acronyme.** La question recommande le nom bâti sur le **seul contenu** du calque, sans l'acronyme (`ABC & Actions` qui regroupe une liste et des boutons → `listActionContainer`), avec « laisser tel quel » en option.
 - **Frame qui usurpe un nom de composant** (frame éditable nommée comme un composant) → `❓`, ne pas trancher.

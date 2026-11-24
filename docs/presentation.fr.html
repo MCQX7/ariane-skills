@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ariane · Présentation</title>
+<!-- Page de présentation d'Ariane, en français. Elle dit la même chose que la version
+     anglaise, presentation.html : changer l'une, c'est changer l'autre. Style commun :
+     presentation.css. -->
+<meta name="description" content="Ariane : des skills Claude Code qui remettent au propre un design system Figma pour qu'une IA sache le lire." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="presentation.css" />
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="masthead__row">
+    <div class="masthead__mark">Ariane<span class="dot">.</span></div>
+    <div class="masthead__right"><span class="masthead__type">Présentation</span><a class="masthead__lang" href="presentation.html" hreflang="en" lang="en" title="Read in English">EN</a><a class="masthead__btn" href="https://github.com/MCQX7/ariane-skills">Voir le dépôt</a></div>
+  </div>
+  <div class="masthead__rule"></div>
+  <div class="masthead__thread"></div>
+</header>
+
+<div class="hero">
+  <h1>Une librairie Figma qu'une IA sait lire.</h1>
+  <p class="lede">Une suite de skills pour Claude Code qui remet au propre les composants d'un design system Figma, pour qu'un agent (un assistant de code, un générateur d'écrans) <strong>les comprenne sans deviner</strong>.</p>
+</div>
+
+<section>
+  <h2>À quoi ça sert</h2>
+  <p class="big">Un agent lit ta librairie telle qu'elle est construite : ses noms, ses propriétés, ses calques, ses descriptions. Quand une propriété s'appelle <code>Property 1</code>, quand un libellé est rangé dans <code>Frame 12</code>, quand rien ne dit à quoi sert un composant, l'agent devine. Ariane lui retire ces devinettes :</p>
+  <ul class="plain">
+    <li><b>des noms qui disent la fonction</b>, en anglais, toujours les mêmes d'un run à l'autre : calques, propriétés, nom du composant ;</li>
+    <li><b>une structure sans coquilles vides</b> : les cadres qui ne servent à rien sont retirés, après avoir prouvé que le rendu ne bouge pas d'un pixel ;</li>
+    <li><b>des descriptions fiables</b> : à quoi sert le composant, ce qu'il contient, où il vit, ce qu'il ne faut pas confondre avec lui.</li>
+  </ul>
+
+  <figure class="ba" aria-label="Le même composant bouton, avant et après Ariane">
+    <div class="ba__col">
+      <div class="ba__tag">Dans le fichier aujourd'hui</div>
+      <dl>
+        <div><dt>Composant</dt><dd>btn copy 2</dd></div>
+        <div><dt>Propriétés</dt><dd>Property 1 : primary button, with icon, just icon, loading…<br>State : Default, hover</dd></div>
+        <div><dt>Calques</dt><dd>Frame 12 › Group 1 › Continue, mail</dd></div>
+        <div><dt>Description</dt><dd><span class="muted">vide</span></dd></div>
+      </dl>
+    </div>
+    <div class="ba__col">
+      <div class="ba__tag">Après Ariane</div>
+      <dl>
+        <div><dt>Composant</dt><dd>Button</dd></div>
+        <div><dt>Propriétés</dt><dd>type : default, destructive, outline, ghost, link<br>state : default, hover, loading<br>buttonLabel · showLeadingIcon · leadingIcon</dd></div>
+        <div><dt>Calques</dt><dd>buttonLabel, icon/mail <span class="muted">(<s>Frame 12</s> et <s>Group 1</s> retirés, rendu inchangé)</span></dd></div>
+        <div><dt>Description</dt><dd><span class="muted">rôle, usage, ce qu'il ne faut pas confondre avec lui, règles, contenu, alias</span></dd></div>
+      </dl>
+    </div>
+  </figure>
+  <p class="ba__note">Un exemple pour illustrer. Démêler ce que <code>Property 1</code> mélange, c'est le travail de la copie corrigée, qu'Ariane construit à côté de l'original pour que tu la relises.</p>
+</section>
+
+<section>
+  <h2>Comment ça marche</h2>
+
+  <figure class="chain">
+    <figcaption>Un composant, du contrôle à la validation</figcaption>
+    <ol>
+      <li class="first"><b>Contrôle</b><span>lecture seule</span></li>
+      <li><b>Proposition</b><span>une copie corrigée, si besoin</span></li>
+      <li><b>Calques</b><span>noms + structure</span></li>
+      <li><b>Propriétés</b><span>+ nom du composant</span></li>
+      <li><b>Descriptions</b><span>montrées avant d'être écrites</span></li>
+      <li><b>Validation</b><span>la copie prend la place</span></li>
+    </ol>
+    <p class="chain__fork">Un composant bien construit passe directement du contrôle aux calques. Un composant à reprendre passe d'abord par la proposition.</p>
+  </figure>
+
+  <ol class="steps">
+    <li><b>Le contrôle</b> lit un composant (ou une planche, ou plusieurs liens) et rend un verdict : « Bien construit » ou « À reprendre ». Il liste au plus cinq problèmes, chacun prêt à coller dans un ticket, au plus trois questions pour l'équipe du design system, et un plan pour corriger. Il n'écrit rien dans Figma.</li>
+    <li><b>La proposition</b>, si tu la demandes : une copie corrigée d'après le plan, posée au-dessus de l'original. L'original et ses instances ne bougent pas.</li>
+    <li><b>Le nommage</b>, dans un ordre fixe : les calques d'abord, puis les propriétés et le nom du composant, puis les descriptions. Chaque étape ne démarre que si la précédente est entièrement propre, sans question en suspens.</li>
+    <li><b>La validation</b>, quand tu as relu la copie : elle prend le nom propre et la place de l'original ; l'ancien part sur une page « En attente de migration », retiré de la publication, avec toutes ses instances intactes.</li>
+    <li><b>Le remplacement dans les écrans</b>, plus tard et seulement si tu le demandes : les instances de l'ancien composant passent sur le nouveau, par lots, après un relevé et un essai.</li>
+  </ol>
+  <p>Sur un <b>écran</b> (une maquette sans composant principal), Ariane ne fait que les calques : il n'y a ni propriété ni description à écrire.</p>
+</section>
+
+<section>
+  <h2>Ce que le contrôle te donne</h2>
+  <p>Un verdict par composant, puis chaque problème écrit comme un ticket pour l'équipe du design system : ce qui ne va pas, pourquoi c'est gênant, ce qu'il faut faire, et où. En voici un, tel qu'il sort.</p>
+  <div class="ticket">
+    <div class="ticket__head"><span class="ticket__name">button</span><span class="ticket__verdict">À reprendre · 2 problèmes</span></div>
+    <div class="ticket__body">
+      <p class="ticket__title">Le libellé et l'icône ne se règlent pas au panneau</p>
+      <dl>
+        <dt>Priorité</dt><dd>Haute</dd>
+        <dt>Ce qui ne va pas</dt><dd><code>button</code> n'a ni propriété texte ni échange d'instance. La plupart des boutons posés changent leur libellé à la main, dans les calques.</dd>
+        <dt>Pourquoi c'est gênant</dt><dd>On ne trouve pas le libellé au panneau, et un libellé saisi se perd dès qu'on change de <code>type</code>.</dd>
+        <dt>À faire</dt><dd>Plan, étape 3. Peut toucher les instances posées : à vérifier sur une branche.</dd>
+        <dt>Où</dt><dd>button, toutes les variantes</dd>
+      </dl>
+    </div>
+  </div>
+  <p>Le plan qui suit dit quoi créer, fondre ou relier, étape par étape, et quels design systems publics font ainsi. Ariane ne juge jamais la complétude : un état qui manque n'est pas un défaut. Elle juge ce qui est construit.</p>
+</section>
+
+<section>
+  <h2>Ce qu'il te faut</h2>
+  <div class="grid">
+    <div class="cell"><div class="name">Claude Code</div><div class="desc">Avec un modèle <b>Opus</b> de préférence : Ariane a été mise au point sur Opus.</div></div>
+    <div class="cell"><div class="name">Le connecteur Figma</div><div class="desc">Le connecteur <b>officiel</b> (le serveur MCP de Figma), <b>avec l'écriture activée</b>. Ariane passe toujours par lui.</div></div>
+    <div class="cell"><div class="name">Un siège Figma payant</div><div class="desc">Un <b>siège Full ou Dev</b> sur une offre Professional, Organization ou Enterprise, et un fichier qui appartient à cette offre. Figma limite les appels au connecteur : 20 par mois sur Starter, en siège View ou Collab, 200 par jour en siège Full ou Dev, 600 sur Enterprise (<a href="https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/">les limites de Figma</a>). 20 par mois ne suffisent pas pour un seul composant.</div></div>
+    <div class="cell"><div class="name">git</div><div class="desc">Pour récupérer Ariane et ses mises à jour. Et un fichier de composants Figma que tu peux modifier.</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Installer</h2>
+<pre><code>git clone https://github.com/MCQX7/ariane-skills.git
+cd ariane-skills
+claude</code></pre>
+  <p>Les skills sont dans <code>.claude/skills/</code> : ils sont actifs dès que tu ouvres Claude Code dans ce dossier. C'est le plus simple : un dossier par design system, qui garde son propre lexique et sa propre mémoire.</p>
+  <p><b>Pour les avoir dans tous tes projets</b>, ajoute un lien par dossier, depuis la racine du dépôt :</p>
+<pre><code>mkdir -p ~/.claude/skills
+for s in .claude/skills/*/; do
+  ln -sfn "$PWD/${s%/}" ~/.claude/skills/"$(basename "$s")"
+done</code></pre>
+  <p>Le lien vers <code>ariane-referentiels/</code> est indispensable : chaque skill cherche ses référentiels à côté de lui, et s'arrête s'il ne les trouve pas. Ariane récupère elle-même sa dernière version (<code>git pull</code>) au début de chaque run.</p>
+</section>
+
+<section>
+  <h2>Avant ton premier run</h2>
+  <div class="cards">
+    <div class="card warn">
+      <h3>Travailler dans une branche Figma</h3>
+      <p>Sur une librairie publiée, renommer un composant ou une propriété atteint tous les fichiers qui l'utilisent dès que tu publies, et revenir à une ancienne version n'y change plus rien. Une branche te donne aussi une comparaison lisible de tout ce qu'Ariane a fait.</p>
+      <p>Ariane ne sait pas créer de branche : elle te demande de confirmer que le filet est en place.</p>
+    </div>
+    <div class="card">
+      <h3>Ranger chaque composant dans une planche</h3>
+      <p>Une copie corrigée se vérifie planche contre planche : l'original et sa copie, chacun dans son cadre ou sa section. Un composant posé seul sur la page se contrôle et se renomme, mais sa copie ne peut pas passer sa vérification complète.</p>
+    </div>
+    <div class="card">
+      <h3>Les autorisations d'écriture</h3>
+      <p>Ariane écrit son journal des descriptions, et le lexique ou le cadre quand tu valides une ligne, sous <code>.claude/</code>. Claude Code te demande ton accord à cet endroit, et une session lancée sans personne au clavier (<code>claude -p</code>) ne peut pas y écrire du tout.</p>
+    </div>
+    <div class="card">
+      <h3>Parler de ton produit à Ariane</h3>
+      <p>Trois fichiers de <code>ariane-referentiels/</code> appartiennent à ton projet. Ils sont livrés vides et Ariane fonctionne sans eux ; quand tu passes à un autre design system, ils se vident à nouveau.</p>
+    </div>
+  </div>
+  <div class="tablewrap">
+    <table class="dem">
+      <thead><tr><th>Fichier</th><th>Ce qu'il contient</th><th>Qui l'écrit</th></tr></thead>
+      <tbody>
+        <tr><td><code>cadre-mission.md</code></td><td>Ce que le fichier Figma ne dit pas : les contraintes de ton design system, les règles de ton produit, tes réponses aux questions d'usage du contrôle.</td><td>Toi ; Ariane propose des lignes, écrites seulement si tu les valides.</td></tr>
+        <tr><td><code>lexique-mission.md</code></td><td>Le vocabulaire de ton domaine : les mots du métier et leur traduction, les noms de produits, les options propres à ton projet.</td><td>Ariane propose, tu valides.</td></tr>
+        <tr><td><code>journal-descriptions.md</code></td><td>La mémoire des descriptions validées, pour retrouver les composants voisins d'une session à l'autre.</td><td>Ariane seule, après ton GO.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Le premier est celui qui aide le plus : quelques lignes sur ce que ton produit impose évitent au contrôle de te poser des questions dont tu connais déjà la réponse.</p>
+</section>
+
+<section>
+  <h2>Un premier run</h2>
+  <p>Ouvre Claude Code dans le dossier d'Ariane, copie le lien d'un composant (ou d'une planche) dans Figma, et parle normalement. La porte d'entrée est <code>/ariane-orchestrator</code>, mais une demande Figma suffit.</p>
+  <ol class="steps">
+    <li><b>Contrôler.</b> « Vérifie ce composant : &lt;lien&gt; ». Tu reçois le verdict, les problèmes, les questions et le plan. S'il y a une question d'usage, Ariane te la pose et complète le plan avec ta réponse.</li>
+    <li><b>Choisir la suite.</b> Construire la proposition (seulement si le verdict est « À reprendre »), renommer directement sur le composant, ou s'arrêter là.</li>
+    <li><b>Répondre aux questions.</b> Quand un nom bute vraiment, Ariane le marque <code>❓</code> et te le demande. Les descriptions te sont montrées d'abord : rien ne s'écrit sans ton GO.</li>
+    <li><b>Relire la copie</b> dans Figma, à côté de l'original. Un retour se donne en clair et s'applique sur cette copie.</li>
+    <li><b>Valider.</b> « La copie est validée : &lt;lien&gt; ». La copie prend la place, l'ancien part en attente de migration.</li>
+    <li><b>Plus tard, migrer les écrans</b>, si tu le demandes. Ariane ne le propose jamais d'elle-même.</li>
+  </ol>
+  <p>Tu peux aussi contrôler plusieurs composants d'un coup, ou passer un écran entier au propre.</p>
+</section>
+
+<section>
+  <h2>Langue, temps et coût</h2>
+  <p><b>Ariane est écrite en français</b> : ses verdicts, ses tickets et ses descriptions sont en français. <b>Les noms qu'elle pose sont en anglais</b>, selon des conventions fixes : camelCase, <code>show</code>/<code>is</code>/<code>has</code> pour les booléens, la fonction plutôt que l'apparence. Elle marche le mieux sur un design system dont les noms d'origine sont en français ou en anglais.</p>
+  <p><b>Elle lit beaucoup avant d'écrire</b>, et c'est voulu : un nom stable et une description juste demandent de connaître tout le composant. Compte une session longue par composant traité en entier (contrôle, copie, nommage) : de l'ordre d'une demi-heure, et de quelques dollars à une quinzaine sur Opus selon la taille du composant. Le contrôle seul est bien plus court. Lance d'abord un seul composant pour mesurer chez toi.</p>
+</section>
+
+<section>
+  <h2>Ce qu'Ariane ne fait pas</h2>
+  <ul class="plain">
+    <li><b>Elle ne supprime jamais l'ancien composant</b> : il est renommé, mis à part et retiré de la publication ; ses instances restent en place jusqu'à la migration.</li>
+    <li><b>Elle ne crée ni branche, ni version, ni publication</b> dans Figma : c'est toi qui publies.</li>
+    <li><b>Elle ne touche pas aux autres fichiers</b> : seulement à celui dont tu donnes le lien.</li>
+    <li><b>Elle ne remplace rien dans les écrans</b> sans que tu le demandes explicitement.</li>
+    <li><b>Elle ne remplit pas le lexique seule</b> : chaque mot nouveau attend ta validation.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Les skills</h2>
+  <div class="tablewrap">
+    <table class="dem">
+      <thead><tr><th>Skill</th><th>Rôle</th></tr></thead>
+      <tbody>
+        <tr><td><code>ariane-orchestrator</code></td><td>La porte d'entrée : détecte la cible, enchaîne les étapes, route le contrôle, la proposition, la validation et le remplacement.</td></tr>
+        <tr><td><code>ariane-check-component</code></td><td>Le contrôle, en lecture seule.</td></tr>
+        <tr><td><code>ariane-rebuild-component</code></td><td>La proposition : une copie corrigée d'après le plan, vérifiée par un script fixe.</td></tr>
+        <tr><td><code>ariane-rename-layers</code></td><td>Les calques et la structure (retrait des cadres inutiles, prouvé au pixel).</td></tr>
+        <tr><td><code>ariane-rename-props</code></td><td>Les propriétés et le nom du composant.</td></tr>
+        <tr><td><code>ariane-describe-components</code></td><td>Les descriptions des composants.</td></tr>
+        <tr><td><code>ariane-replace-instances</code></td><td>Le remplacement dans les écrans, sur demande seulement.</td></tr>
+        <tr><td><code>ariane-referentiels/</code></td><td>Les conventions, les patterns, les types de composants, et les trois fichiers de ton projet.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="footer">
+  <a href="https://github.com/MCQX7/ariane-skills">github.com/MCQX7/ariane-skills</a> · <a href="https://github.com/MCQX7/ariane-skills/blob/main/CHANGELOG.md">Versions</a> · <a href="https://github.com/MCQX7/ariane-skills/blob/main/LICENSE">Licence MIT</a>
+</footer>
+
+</div>
+</body>
+</html>

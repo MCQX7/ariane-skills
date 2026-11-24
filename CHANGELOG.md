@@ -5,9 +5,9 @@
 Première version publique · First public release.
 
 - `ariane-orchestrator` v1.21
-- `ariane-check-component` v2.16
-- `ariane-rename-layers` v2.21
-- `ariane-rename-props` v1.25
-- `ariane-describe-components` v1.18
+- `ariane-check-component` v2.17
+- `ariane-rename-layers` v2.22
+- `ariane-rename-props` v1.26
+- `ariane-describe-components` v1.19
 - `ariane-rebuild-component` v0.15
 - `ariane-replace-instances` v0.3
