@@ -3,6 +3,7 @@
   <img alt="For Claude Code" src="https://img.shields.io/badge/for-Claude%20Code-111111?style=flat-square">
   <img alt="Built for Opus" src="https://img.shields.io/badge/built%20for-Opus-111111?style=flat-square">
   <img alt="Figma" src="https://img.shields.io/badge/Figma-official%20connector-111111?style=flat-square">
+  <a href="https://mcqx7.github.io/ariane-skills/"><img alt="The overview" src="https://img.shields.io/badge/overview-online-5a3fd0?style=flat-square"></a>
 </p>
 
 <p align="center"><b>English</b> · <a href="README.fr.md">Français</a></p>
