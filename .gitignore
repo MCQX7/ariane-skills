@@ -2,3 +2,5 @@
 
 # Réglages propres à ta machine
 .claude/settings.local.json
+# Les pages de tickets de tes contrôles : ta trace, pas celle d'Ariane
+tickets/

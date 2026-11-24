@@ -55,7 +55,8 @@ flowchart LR
 1. **The check** reads a component (or a board, or several links) and gives a
    verdict: "well built" or "needs rework". It lists at most five issues, each ready
    to paste into a ticket, at most three questions for the design system team, and a
-   plan to fix it. It writes nothing in Figma.
+   plan to fix it. It writes nothing in Figma: its tickets go into a dated page in
+   `tickets/`, easy to read and to copy ticket by ticket, which stays after the session.
 2. **The proposal**, if you ask for it: a copy corrected according to the plan,
    placed above the original. The original and its instances don't move.
 3. **Naming**, in a fixed order: layers first, then properties and the component's

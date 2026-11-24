@@ -52,7 +52,9 @@ flowchart LR
 1. **Le contrôle** lit un composant (ou une planche, ou plusieurs liens) et rend un
    verdict : « Bien construit » ou « À reprendre ». Il donne au plus cinq problèmes,
    chacun prêt à coller dans un ticket, au plus trois questions pour l'équipe du
-   design system, et un plan de correction. Il n'écrit rien dans Figma.
+   design system, et un plan de correction. Il n'écrit rien dans Figma : ses tickets vont
+   dans une page datée, dans `tickets/`, facile à lire et à copier ticket par ticket, qui
+   reste après la session.
 2. **La proposition**, si tu la demandes : une copie corrigée d'après le plan, posée
    au-dessus de l'original. L'original et ses instances ne bougent pas.
 3. **Le nommage**, dans un ordre fixe : les calques d'abord, puis les propriétés et
