@@ -129,14 +129,6 @@ at the start of each run.
 > Ariane can't create branches or versions: it asks you to confirm the safety net is
 > in place.
 
-### Put each component in a board
-
-A corrected copy is checked board against board: the original and its copy, each in
-its own frame or section. A component placed on its own on the page, outside any
-frame, can be checked and renamed without trouble, but its copy can't go through its
-full verification. Before asking for a proposal, put the component in a frame or a
-section.
-
 ### Write permissions
 
 Ariane writes its description log, and the lexicon or the project frame when you
@@ -146,8 +138,10 @@ session run with nobody at the keyboard (`claude -p`) can't write there at all.
 
 ### Telling Ariane about your product
 
-Three files in `.claude/skills/ariane-referentiels/` belong to your project. They
-ship empty, and Ariane works without them:
+Three files in `.claude/skills/ariane-referentiels/` belong to your project. Ariane
+creates them empty on your first run, from their templates (`modeles/`), and works
+without you filling them in. They stay yours: git doesn't track them, so Ariane's
+updates never touch them.
 
 | File | What it holds | Who writes it |
 |---|---|---|
@@ -158,7 +152,8 @@ ship empty, and Ariane works without them:
 The first one helps most: a few lines on what your product imposes save the check
 from asking questions you already know the answer to.
 
-When you move to another design system, these three files are emptied. The other
+When you move to another design system, delete these three files: Ariane creates them
+empty again on the next run. The other
 reference files (naming conventions, interface patterns, component types drawn from
 public design systems) are about the craft: they stay.
 

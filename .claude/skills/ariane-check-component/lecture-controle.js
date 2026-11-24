@@ -13,7 +13,9 @@
 //  - sansEffet : chaque propriété du master (on/off, texte, échange) appliquée à aucun calque, dans aucune variante ;
 //  - appliqueeSeulementDans : une propriété du master appliquée dans certaines variantes seulement (Figma ne la montre
 //    au panneau que dans celles-là : un verrou, pas un défaut) ;
-//  - valeursIdentiques : deux valeurs d'une propriété de variante dont les variantes sont identiques ;
+//  - valeursIdentiques : deux valeurs d'une propriété de variante dont les variantes sont identiques — opacité comprise
+//    (celle de chaque calque, de la variante, des fonds et des contours) : un état qui ne change que la transparence
+//    (un désactivé à 50 %) n'est pas identique ;
 //  - changeDeNom : une instance exposée — reconnue par le composant dont elle vient et son rang — qui ne porte pas le même
 //    nom d'une variante à l'autre : ce qu'on règle sur elle se perd au changement de variante (constaté dans Figma) ;
 //  - changeDeParent : la même, nom gardé, posée dans un autre cadre d'une variante à l'autre : Figma retrouve le réglage
@@ -31,7 +33,7 @@
 //  - montrableSansChoix : une instance posée dans les variantes, qu'un on/off montre ou cache, dont le contenu ne se
 //    choisit par aucun échange d'instance (une icône qu'on peut afficher mais pas changer) ;
 //  - identiquesSur : une valeur d'une propriété de variante dont les variantes sont identiques quelle que soit la valeur
-//    d'une autre propriété (un chargement le même pour tous les thèmes) ;
+//    d'une autre propriété (un chargement le même pour tous les thèmes) — même comparaison, opacité comprise ;
 //  - pieces : chaque composant posé dans les variantes du master (pour un master de librairie posé, lu dans une instance), à tous les niveaux, avec à qui il sert (local ou de
 //    librairie, les autres masters du fichier qui le posent, ses instances posées hors de tout composant) ; une pièce
 //    locale qui ne porte qu'un fond (ni texte, ni image, ni dessin vectoriel, dans aucune variante, et des instances de
@@ -218,7 +220,10 @@ for (; k < masters.length; k++) {
   }
   if (ma.type === 'COMPONENT_SET' && variantes.length > 400) nonCalcule.push('valeursIdentiques, identiquesSur et sansContenu non calculés au-delà de 400 variantes (' + variantes.length + ') : les relire par lots');
   if (ma.type === 'COMPONENT_SET' && variantes.length <= 400) {
-    const emp = v => { const t = []; const pile = [v]; while (pile.length) { const n = pile.pop(); if (n.id !== v.id) t.push([n.type, n.name, n.visible, Math.round(n.width), Math.round(n.height), n.type === 'TEXT' ? n.characters : '', JSON.stringify(n.fills || ''), JSON.stringify(n.boundVariables || {}), n.type === 'INSTANCE' ? JSON.stringify(n.componentProperties) : ''].join('~')); if ('children' in n) pile.push(...n.children); } return t.join('|') + Math.round(v.width) + 'x' + Math.round(v.height) + JSON.stringify(v.fills || '') + JSON.stringify(v.strokes || '') + (v.strokeWeight === figma.mixed ? 'mixte' : v.strokeWeight) + JSON.stringify(v.effects || '') + JSON.stringify(v.boundVariables || {}); };
+    // l'empreinte d'une variante : chaque calque avec son opacité (celle des parents jusqu'à la variante y est, calque par
+    // calque), ses fonds et ses contours (opacité de chaque peinture comprise) ; la variante avec la sienne. Deux variantes
+    // qui ne diffèrent que par l'opacité (un désactivé à 50 %) ne sont pas identiques.
+    const emp = v => { const t = []; const pile = [v]; while (pile.length) { const n = pile.pop(); if (n.id !== v.id) t.push([n.type, n.name, n.visible, Math.round(n.width), Math.round(n.height), n.type === 'TEXT' ? n.characters : '', JSON.stringify(n.fills || ''), JSON.stringify(n.boundVariables || {}), n.type === 'INSTANCE' ? JSON.stringify(n.componentProperties) : '', 'op' + (n.opacity == null ? 1 : n.opacity), JSON.stringify(n.strokes || '')].join('~')); if ('children' in n) pile.push(...n.children); } return t.join('|') + Math.round(v.width) + 'x' + Math.round(v.height) + JSON.stringify(v.fills || '') + JSON.stringify(v.strokes || '') + (v.strokeWeight === figma.mixed ? 'mixte' : v.strokeWeight) + JSON.stringify(v.effects || '') + JSON.stringify(v.boundVariables || {}) + 'op' + (v.opacity == null ? 1 : v.opacity); };
     const vp = v => v.variantProperties || {};
     const axes = Object.keys(defs).filter(c => defs[c].type === 'VARIANT');
     const empreintes = new Map(variantes.map(v => [v.id, emp(v)]));

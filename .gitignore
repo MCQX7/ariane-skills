@@ -4,3 +4,8 @@
 .claude/settings.local.json
 # Les pages de tickets de tes contrôles : ta trace, pas celle d'Ariane
 tickets/
+# Tes fichiers de mission : Ariane les crée au premier run, depuis leurs modèles ; git ne les suit pas,
+# pour que ses mises à jour n'y touchent jamais
+.claude/skills/ariane-referentiels/cadre-mission.md
+.claude/skills/ariane-referentiels/lexique-mission.md
+.claude/skills/ariane-referentiels/journal-descriptions.md

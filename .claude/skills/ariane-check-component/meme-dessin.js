@@ -4,7 +4,8 @@
 // CIBLE : id du nœud contrôlé (le même que pour la lecture fixe). DEBUT : 0, puis `suite` tant qu'il n'est pas null ;
 // les listes `memeDessin` se cumulent d'un appel à l'autre.
 // Rend memeDessin : une variante d'un composant de la cible qui a le même dessin (même arbre de calques, sans entrer dans
-// les instances, mêmes couleurs et même typographie — variables, styles, valeurs brutes ; la racine comprise) qu'une
+// les instances, mêmes couleurs de fond et de contour et même typographie — variables, styles, valeurs brutes —, même
+// opacité de chaque calque et de chaque peinture ; la racine comprise) qu'une
 // variante d'un autre composant de la page — noms de propriétés et de variantes mis à part ; marges, espacements et
 // arrondis mis à part : une copie qui a dérivé reste une copie. Seules les variantes d'au moins deux calques et deux
 // liaisons comptent. Le budget court après le chargement de la page, qui se refait à chaque appel.
@@ -18,8 +19,10 @@ const estMaster = n => n.type === 'COMPONENT_SET' || (n.type === 'COMPONENT' && 
 const masters = estMaster(racine) ? [racine] : racine.findAll(estMaster);
 {
   let page = racine; while (page && page.type !== 'PAGE') page = page.parent;
-  const couleur = n => { try { return (n.fills || []).filter(f => f.visible !== false && f.type === 'SOLID').map(f => [f.color.r, f.color.g, f.color.b, f.opacity == null ? 1 : f.opacity].map(x => Math.round(x * 100)).join('.')).join('+'); } catch (e) { return ''; } };
-  const sig = v => { const t = []; let liens = 0, enfants = 0; const pile = [[v, 0]]; while (pile.length) { const [n, d] = pile.pop(); const bv = n.boundVariables || {}; const ids = Object.keys(bv).filter(k => /fill|stroke|font|lineHeight|letterSpacing|textStyle/i.test(k)).sort().map(k => k + ':' + JSON.stringify(bv[k]).replace(/[^A-Za-z0-9:]/g, '')).join(','); const st = [n.fillStyleId, n.strokeStyleId, n.textStyleId, n.effectStyleId].filter(x => typeof x === 'string' && x).join(','); if (ids || st) liens++; if (n.id !== v.id) enfants++; t.push(d + (n.id === v.id ? 'RACINE' : n.type) + '{' + ids + '}' + st + '#' + couleur(n)); if ('children' in n && n.type !== 'INSTANCE') for (const c of n.children) pile.push([c, d + 1]); } return enfants >= 2 && liens >= 2 ? t.join('|') : null; };
+  // couleurs pleines d'un fond ou d'un contour, opacité de chaque peinture comprise ; l'opacité du calque à part
+  const couleur = (n, champ = 'fills') => { try { return (n[champ] || []).filter(f => f.visible !== false && f.type === 'SOLID').map(f => [f.color.r, f.color.g, f.color.b, f.opacity == null ? 1 : f.opacity].map(x => Math.round(x * 100)).join('.')).join('+'); } catch (e) { return ''; } };
+  const opacite = n => Math.round((n.opacity == null ? 1 : n.opacity) * 100);
+  const sig = v => { const t = []; let liens = 0, enfants = 0; const pile = [[v, 0]]; while (pile.length) { const [n, d] = pile.pop(); const bv = n.boundVariables || {}; const ids = Object.keys(bv).filter(k => /fill|stroke|font|lineHeight|letterSpacing|textStyle/i.test(k)).sort().map(k => k + ':' + JSON.stringify(bv[k]).replace(/[^A-Za-z0-9:]/g, '')).join(','); const st = [n.fillStyleId, n.strokeStyleId, n.textStyleId, n.effectStyleId].filter(x => typeof x === 'string' && x).join(','); if (ids || st) liens++; if (n.id !== v.id) enfants++; t.push(d + (n.id === v.id ? 'RACINE' : n.type) + '{' + ids + '}' + st + '#' + couleur(n) + '/' + couleur(n, 'strokes') + '~op' + opacite(n)); if ('children' in n && n.type !== 'INSTANCE') for (const c of n.children) pile.push([c, d + 1]); } return enfants >= 2 && liens >= 2 ? t.join('|') : null; };
   const proprio = c => c.parent && c.parent.type === 'COMPONENT_SET' ? c.parent : c;
   const dansCible = new Set(masters.map(m => m.id));
   const cibles = new Map(), largeurs = new Set();

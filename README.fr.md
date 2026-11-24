@@ -128,14 +128,6 @@ lire ou d'écrire quoi que ce soit dans Figma.
 > Ariane ne sait créer ni branche ni version : elle te demande de confirmer que le
 > filet est en place.
 
-### Ranger chaque composant dans une planche
-
-Une copie corrigée se vérifie planche contre planche : l'original et sa copie, chacun
-dans son cadre ou sa section. Un composant posé seul sur la page, hors de tout cadre,
-se contrôle et se renomme sans problème, mais sa copie ne passe pas toute sa
-vérification. Avant de demander une proposition, range le composant dans un cadre ou
-une section.
-
 ### Les autorisations d'écriture
 
 Ariane écrit son journal des descriptions, et le lexique ou le cadre quand tu valides
@@ -146,7 +138,9 @@ lancée sans personne (`claude -p`) ne peut pas y écrire du tout.
 ### Raconter ton produit à Ariane
 
 Trois fichiers de `.claude/skills/ariane-referentiels/` appartiennent à ta mission.
-Ils sont livrés vides, et Ariane fonctionne sans eux :
+Ariane les crée vides à ton premier run, depuis leurs modèles (`modeles/`), et fonctionne
+sans que tu les remplisses. Ils restent chez toi : git ne les suit pas, donc les mises à
+jour d'Ariane n'y touchent jamais.
 
 | Fichier | Ce qu'il porte | Qui l'écrit |
 |---|---|---|
@@ -157,7 +151,8 @@ Ils sont livrés vides, et Ariane fonctionne sans eux :
 Le cadre est celui qui sert le plus : quelques lignes sur ce que ton produit impose
 évitent au contrôle de te poser des questions dont tu connais la réponse.
 
-Quand tu changes de design system, ces trois fichiers se vident. Les autres
+Quand tu changes de design system, supprime ces trois fichiers : Ariane les recrée vides
+au run suivant. Les autres
 référentiels (conventions de nommage, patterns d'interface, types de composants
 d'après des design systems publics) sont du métier : ils restent.
 
