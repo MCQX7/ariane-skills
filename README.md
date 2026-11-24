@@ -180,8 +180,10 @@ but you don't need to name it: a Figma request is enough.
 3. **Answer the questions** — when a name really can't be decided, Ariane marks it
    `❓` and asks you to settle it before going on. Descriptions are shown to you
    before they're written: nothing is written without your GO.
-4. **Review the copy** — in Figma, next to the original. Give feedback in plain words
-   ("on the copy, the button should…"); it's applied to that copy.
+4. **Review the copy** — in Figma, next to the original, with its review page in
+   `tickets/`: what was done on the copy, what's left to do by hand, and the ticket to
+   copy. Give feedback in plain words ("on the copy, the button should…"); it's applied
+   to that copy.
 5. **Validate** — "The copy is approved: `<proposal link>`". The copy takes over, the
    old one goes to "waiting for migration", the file's descriptions follow.
 6. **Later, migrate the screens** — "Replace the old component with the new one in

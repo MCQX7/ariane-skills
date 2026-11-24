@@ -1,5 +1,6 @@
 #!/bin/sh
-# Fait la page de tickets d'un contrôle : page-tickets.sh tickets/AAAA-MM-JJ-controle-<cible>.md
+# Fait la page de tickets d'un contrôle, ou celle de la revue des copies :
+#   page-tickets.sh tickets/AAAA-MM-JJ-controle-<cible>.md   (ou …-revue-<cible>.md)
 # Écrit, à côté du .md, la page .html du même nom, remplie depuis le modèle page-tickets.html.
 # Rien d'autre n'est écrit. Relancer le script après avoir refait le .md refait la page.
 set -eu

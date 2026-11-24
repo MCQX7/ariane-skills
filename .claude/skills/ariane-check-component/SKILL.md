@@ -5,7 +5,7 @@ user-invocable: false
 ---
 
 # Figma — Contrôle de construction d'un composant (avant Ariane)
-<!-- version: v2.18 -->
+<!-- version: v2.19 -->
 
 Dit si un **master** est **bien construit, utilisable et lisible par une IA** avant qu'Ariane le renomme et le décrive, et, s'il ne l'est pas, **ce qu'il faut reprendre**. La sortie est lue par un **designer**, qui la colle en tickets pour l'**équipe du design system** : c'est le DS qui corrige. **Ce skill ne touche à rien** : il lit, il constate, il recommande ; il ne laisse que sa page de tickets (§ Sortie).
 

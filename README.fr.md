@@ -179,8 +179,10 @@ planche de composants) dans Figma, et parle normalement. La seule porte d'entré
 3. **Répondre aux questions** — quand un nom bute vraiment, Ariane le marque `❓` et
    te demande de trancher avant de continuer. Les descriptions te sont montrées
    avant d'être écrites : rien ne s'écrit sans ton GO.
-4. **Relire la copie** — dans Figma, à côté de l'original. Un retour se donne en
-   clair (« sur la copie, le bouton doit… ») et s'applique sur cette copie.
+4. **Relire la copie** — dans Figma, à côté de l'original, avec sa page de revue dans
+   `tickets/` : ce qui a été fait sur la copie, ce qui reste à faire à la main, et le
+   ticket à recopier. Un retour se donne en clair (« sur la copie, le bouton doit… ») et
+   s'applique sur cette copie.
 5. **Valider** — « La copie est validée : `<lien de la proposition>` ». La copie
    prend la place, l'ancien part en attente de migration, les descriptions du
    fichier suivent.
