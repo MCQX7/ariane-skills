@@ -5,7 +5,7 @@ user-invocable: false
 ---
 
 # Figma — Renommage des props (AI-ready)
-<!-- version: v1.26 -->
+<!-- version: v1.27 -->
 
 Renomme les **propriétés** de composants Figma (Boolean, Text, dimensions et options de variant) **et le NOM du master** via le MCP Figma (`use_figma` / Plugin API). **Ne touche pas aux layers internes** (autre périmètre) **ni aux instances**.
 
@@ -155,7 +155,7 @@ Récapitulatif des renommages appliqués + liste des `❓` restants.
 - un `❓` tranché pendant le run vaut pour **ce run** ; il n'entre au référentiel qu'à la validation de sa ligne.
 
 **ROUTAGE — choisir le fichier AVANT d'écrire (obligatoire, jamais par défaut) :**
-- une **règle de construction**, ou une traduction de vocabulaire d'**interface** valable hors de cette mission → `${CLAUDE_SKILL_DIR}/../ariane-referentiels/conventions-nommage.md` ;
+- une traduction de vocabulaire d'**interface** → `${CLAUDE_SKILL_DIR}/../ariane-referentiels/lexique-mission.md`, section « Vocabulaire d'interface » ; une **règle de construction** ne s'écrit pas pendant un run : elle reste dans le récapitulatif avec les lignes à verser, marquée « pour les conventions, hors run », pour qui maintient Ariane. **Les fichiers livrés avec Ariane (conventions, patterns, types de composants) ne s'écrivent jamais pendant un run** : une mise à jour d'Ariane buterait sur eux ;
 - un terme dont le sens dépend du **domaine**, un **nom de produit**, une **option de variant** propre au projet → `${CLAUDE_SKILL_DIR}/../ariane-referentiels/lexique-mission.md`.
 
 En cas de doute : **le lexique**. Une entrée trop spécifique versée dans les conventions pollue le socle de toutes les missions suivantes ; l'inverse ne coûte qu'une recopie au prochain projet. **Ne jamais verser dans les conventions un terme accompagné d'un exemple propre à la mission** — généraliser l'exemple, ou router vers le lexique.

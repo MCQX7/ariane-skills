@@ -17,10 +17,17 @@ le vocabulaire propre au domaine et **se vide** à chaque changement de mission.
 > [!IMPORTANT]
 > **Règle de routage — où écrire une décision nouvelle. UN SEUL TEST :**
 >
+> **Jamais ici pendant un run** : ce fichier est livré avec Ariane, et une mise à
+> jour d'Ariane buterait sur une ligne ajoutée. En cours de run, un mot du métier
+> de designer validé va dans le lexique de mission, section « Vocabulaire
+> d'interface » ; une règle de construction reste dans le récapitulatif, « À
+> verser aux conventions ». Le test ci-dessous vaut pour le reste du lexique, et
+> pour l'entretien de ce fichier hors run.
+>
 > **Ce terme appartient-il au vocabulaire du MÉTIER DE DESIGNER, ou décrit-il
 > quelque chose de CE CLIENT — son produit, sa marque, ses écrans ?**
 >
-> - métier de designer → **ici** (`lettrage`, `lumière`, `page tampon`, `bandeau`,
+> - métier de designer → **ici**, hors run (`lettrage`, `lumière`, `page tampon`, `bandeau`,
 >   `vignette`, et toutes les règles de construction) ;
 > - propre au client → **`lexique-mission.md`** (`licorne`, `corne` —
 >   l'anatomie d'une mascotte de marque ; `sinistre`, `franchise` — un domaine métier ; tout nom de
@@ -38,7 +45,7 @@ le vocabulaire propre au domaine et **se vide** à chaque changement de mission.
 > évolution de la convention maison. Le lexique l'emporte alors sur le socle pour
 > toute la mission (cf. règle de PRÉCÉDENCE des deux skills). Écrire dans le socle
 > **uniquement** si tu juges que ton défaut lui-même était mauvais — auquel cas
-> dis-le explicitement.
+> dis-le explicitement, et hors run.
 >
 > En cas de doute : le lexique. Une entrée trop spécifique placée ici pollue le
 > socle de toutes les missions suivantes ; l'inverse ne coûte qu'une recopie au

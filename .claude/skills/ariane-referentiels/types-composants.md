@@ -24,7 +24,7 @@ Relevé du **9 octobre 2026**, complété le **16 octobre 2026** pour la constru
 
 ### P1 — Un outil par nature de différence
 Figma distingue cinq types de propriétés ; chaque différence entre deux rendus se porte par l'outil qui lui correspond.
-- **Propriété de variante** : états, types, tailles — les différences qui changent l'apparence ou la structure (Figma, *Explore component properties* ; *Creating and organizing variants*). Primer : une variante quand le changement n'est **que du style** ; un **composant séparé** quand la fonction change.
+- **Propriété de variante** : états, types, tailles — les différences qui changent l'apparence ou la structure (Figma, *Explore component properties* ; *Creating and organizing variants*). Primer : une variante quand le changement n'est **que du style** ; un **composant séparé** quand la fonction change. Dans Ariane, un composant séparé ne se crée jamais d'office à partir des valeurs d'un composant existant : il suit le découpage que le design system fait déjà, sinon le designer le demande (contrôle, Correction recommandée).
 - **Propriété booléenne** : montrer ou cacher un élément facultatif, au lieu de variantes pour chaque combinaison d'éléments (Figma, *Component property fundamentals*). Limite citée par Compound : si cacher l'élément change l'espacement, une variante est nécessaire.
 - **Propriété texte** : le contenu à remplir (Figma).
 - **Propriété d'échange d'instance** : remplacer un élément imbriqué (une icône, un visuel) parmi des choix approuvés — Figma déconseille une variante par icône.

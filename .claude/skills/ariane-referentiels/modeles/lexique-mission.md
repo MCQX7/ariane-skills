@@ -1,6 +1,6 @@
 ---
 name: lexique-mission
-description: "Lexique du DOMAINE de la mission en cours — traductions FR→EN dont le sens dépend du métier, noms de produits, options de variant propres au projet. PARTAGÉ par ariane-rename-props ET ariane-rename-layers, lu aussi par ariane-describe-components. Lu en étape 0 ; ne porte que des règles, enrichi seulement par des lignes validées par le designer. SE VIDE à chaque changement de mission, contrairement aux conventions de nommage."
+description: "Lexique du DOMAINE de la mission en cours — traductions FR→EN dont le sens dépend du métier, noms de produits, options de variant propres au projet. PARTAGÉ par ariane-rename-props ET ariane-rename-layers, lu aussi par ariane-describe-components. Lu en étape 0 ; ne porte que des règles, enrichi seulement par des lignes validées par le designer. SE VIDE à chaque changement de mission, contrairement aux conventions de nommage — sauf sa section « Vocabulaire d'interface », où vont les mots d'interface validés pendant un run."
 metadata:
   type: reference
 ---
@@ -17,8 +17,10 @@ skill et **validée explicitement par le designer**.
 > [!WARNING]
 > **Ce fichier se vide au changement de mission.** Il ne contient que ce qui
 > perd son sens hors du domaine courant. Les règles de construction et le
-> vocabulaire d'interface vivent dans `conventions-nommage.md`, qui lui
-> est conservé — voir la règle de routage qui y figure.
+> vocabulaire d'interface livrés avec Ariane vivent dans `conventions-nommage.md`,
+> qui n'est jamais écrit pendant un run : un mot d'interface validé en cours de
+> run s'écrit ici, sous « Vocabulaire d'interface ». Au changement de mission,
+> cette section seule peut se garder : elle ne dépend pas du domaine.
 
 Vide au départ : il se remplit au fil des runs, des lignes proposées par les
 skills et validées par le designer. On peut aussi y écrire d'avance les mots
@@ -55,6 +57,12 @@ Skills associés : `ariane-rename-props` (props, **propose** ici des lignes, éc
 `ariane-describe-components` (descriptions, **propose** ici les termes tranchés, écrits après validation du designer) et
 `ariane-rename-layers` (layers/textes, **lecture seule** — il propose les `❓`
 absents, il n'écrit jamais).
+
+## Vocabulaire d'interface
+
+Les mots d'interface (bouton, ligne de menu…) validés pendant les runs, quand
+la section « Vocabulaire d'interface FR → EN » de `conventions-nommage.md` ne les a pas : une ligne par mot, sa traduction et ses
+variantes. Ils valent comme ceux des conventions.
 
 ## Gabarit des planches de documentation
 

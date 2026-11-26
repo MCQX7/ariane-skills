@@ -26,7 +26,7 @@ assistant, a screen generator) understands them without guessing:
 Before touching anything, Ariane **checks**: it tells you whether a component is
 built well enough, and if not, what needs reworking, as issues ready to become
 tickets for the design system team. When a component needs reworking, it can build
-a **corrected copy** above the original, which you review before it takes its place.
+a **corrected copy** next to the original, which you review before it takes its place.
 
 You decide at every step. Ariane never writes anything without saying so, and never
 deletes the old component.
@@ -58,7 +58,7 @@ flowchart LR
    plan to fix it. It writes nothing in Figma: its tickets go into a dated page in
    `tickets/`, easy to read and to copy ticket by ticket, which stays after the session.
 2. **The proposal**, if you ask for it: a copy corrected according to the plan,
-   placed above the original. The original and its instances don't move.
+   placed next to the original. The original and its instances don't move.
 3. **Naming**, in a fixed order: layers first, then properties and the component's
    name, then descriptions. Each step only starts if the previous one is entirely
    clean, with no open question.
@@ -146,7 +146,7 @@ updates never touch them.
 | File | What it holds | Who writes it |
 |---|---|---|
 | `cadre-mission.md` | what the Figma file doesn't say: your design system's constraints (how it carries its brands, its themes), your product's rules (a fixed text, a forbidden combination), your answers to the check's usage questions | you; Ariane suggests lines at the end of a run, written only if you approve them |
-| `lexique-mission.md` | your domain's vocabulary: the words of your business and their translation, your product names, options specific to your project | Ariane suggests, you approve; you can also write what you already know in advance |
+| `lexique-mission.md` | your domain's vocabulary: the words of your business and their translation, your product names, options specific to your project, and the interface words you approve during a run | Ariane suggests, you approve; you can also write what you already know in advance |
 | `journal-descriptions.md` | the memory of approved descriptions, to find neighbouring components from one session to the next | Ariane only, after your GO |
 
 The first one helps most: a few lines on what your product imposes save the check
@@ -169,7 +169,7 @@ but you don't need to name it: a Figma request is enough.
    and completes the plan with your answer. Then it asks what's next.
 2. **Choose what's next** — three choices, each saying what it does:
    - *build the proposal* (only if the verdict is "needs rework"): a corrected copy
-     above the original, then its full naming;
+     next to the original, then its full naming;
    - *rename*: layers, properties and descriptions, directly on the component;
    - *stop here*: nothing is written.
 3. **Answer the questions** — when a name really can't be decided, Ariane marks it

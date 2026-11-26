@@ -26,7 +26,7 @@ assistant de code, un générateur d'écrans) les comprenne sans deviner :
 Avant de toucher à quoi que ce soit, Ariane **contrôle** : elle dit si un composant
 est assez bien construit, et sinon ce qu'il faut reprendre, en problèmes prêts à
 devenir des tickets pour l'équipe du design system. Quand un composant est à
-reprendre, elle peut en construire une **copie corrigée** au-dessus de l'original,
+reprendre, elle peut en construire une **copie corrigée** près de l'original,
 que tu relis avant qu'elle ne prenne sa place.
 
 Tu décides à chaque étape. Ariane n'écrit rien sans le dire, et ne supprime jamais
@@ -56,7 +56,7 @@ flowchart LR
    dans une page datée, dans `tickets/`, facile à lire et à copier ticket par ticket, qui
    reste après la session.
 2. **La proposition**, si tu la demandes : une copie corrigée d'après le plan, posée
-   au-dessus de l'original. L'original et ses instances ne bougent pas.
+   près de l'original. L'original et ses instances ne bougent pas.
 3. **Le nommage**, dans un ordre fixe : les calques d'abord, puis les propriétés et
    le nom du composant, puis les descriptions. Chaque étape ne démarre que si la
    précédente est entièrement propre, sans question en suspens.
@@ -145,7 +145,7 @@ jour d'Ariane n'y touchent jamais.
 | Fichier | Ce qu'il porte | Qui l'écrit |
 |---|---|---|
 | `cadre-mission.md` | ce que le fichier Figma ne dit pas : les contraintes de ton design system (comment il porte ses marques, ses thèmes), les règles de ton produit (un texte figé, une composition interdite), tes réponses aux questions d'usage du contrôle | toi ; Ariane propose des lignes en fin de run, écrites seulement si tu les valides |
-| `lexique-mission.md` | le vocabulaire de ton domaine : les mots de ton métier et leur traduction, les noms de tes produits, les options propres à ton projet | Ariane propose, tu valides ; tu peux aussi y écrire d'avance ce que tu sais |
+| `lexique-mission.md` | le vocabulaire de ton domaine : les mots de ton métier et leur traduction, les noms de tes produits, les options propres à ton projet, et les mots d'interface que tu valides en cours de run | Ariane propose, tu valides ; tu peux aussi y écrire d'avance ce que tu sais |
 | `journal-descriptions.md` | la mémoire des descriptions validées, pour retrouver les composants voisins d'une session à l'autre | Ariane seule, après ton GO |
 
 Le cadre est celui qui sert le plus : quelques lignes sur ce que ton produit impose
@@ -168,7 +168,7 @@ planche de composants) dans Figma, et parle normalement. La seule porte d'entré
    te la pose et complète le plan avec ta réponse. Puis elle te demande la suite.
 2. **Choisir la suite** — trois choix, chacun dit ce qu'il fait :
    - *construire la proposition* (seulement si le verdict est « À reprendre ») : une
-     copie corrigée au-dessus de l'original, puis son nommage complet ;
+     copie corrigée près de l'original, puis son nommage complet ;
    - *renommer* : calques, propriétés et descriptions, directement sur le composant ;
    - *s'arrêter là* : rien n'est écrit.
 3. **Répondre aux questions** — quand un nom bute vraiment, Ariane le marque `❓` et
