@@ -1,5 +1,11 @@
 # Ce qui change d'une version à l'autre · What changes from one version to the next
 
+## 1.3.1 — 2026
+
+- Les lignes qui disent ce qui se fait pendant une étape longue parlent avec les mots de Figma, plus avec le nom des outils d'Ariane. · Progress lines during a long step use Figma's words, no longer the names of Ariane's tools.
+
+- `ariane-orchestrator` v1.26
+
 ## 1.3 — 2026
 
 Corrections tirées d'un essai comme un inconnu · Fixes from a trial run as a newcomer.

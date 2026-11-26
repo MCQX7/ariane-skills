@@ -4,7 +4,7 @@ description: "Point d'entrée d'Ariane (fichiers Figma lisibles par une IA). Pre
 ---
 
 # Ariane — Orchestrateur (nommage, contrôle, proposition, remplacement)
-<!-- version: v1.25 -->
+<!-- version: v1.26 -->
 
 Coordonne le nommage AI-ready d'une **sélection Figma entière** en enchaînant les trois étapes de nommage dans le bon ordre, et route les demandes de contrôle, de proposition et de remplacement vers leur étape. **Ne renomme rien lui-même** : il détecte la cible, lance `ariane-rename-layers` puis (si pertinent) `ariane-rename-props` et `ariane-describe-components`, et vérifie entre chaque étape. Les trois skills appelés **restent la seule source de vérité** de leurs règles respectives.
 
@@ -108,6 +108,6 @@ En cas d'échec, **dire OÙ** (layers / jointure 1 / props / jointure 2 / descri
 - **Isolation des échecs aux JOINTURES**, pas à l'intérieur des skills individuels (chacun gère ses propres erreurs ; l'orchestrateur arbitre le passage de l'un à l'autre).
 - **Chaque question à choix dit, pour chaque choix, ce qui se passe ensuite** : ce qui s'écrit, quelle étape suit, ou l'arrêt. Un choix qui déclenche une écriture le dit.
 - **Une question ne demande qu'une chose** : jamais une validation et un choix dans la même question (valider une liste de noms, puis choisir un nom, sont deux questions). **Toute question au designer se pose avec l'outil de questions**, à part — jamais glissée en dernière phrase d'un résumé ou d'un compte rendu.
-- **Ce que le designer lit est en français simple** : il connaît Figma, pas les rouages d'Ariane. Jamais le nom d'un outil interne (lecture fixe, sonde, jointure, passe numérotée), ni d'une partie de récapitulatif par sa lettre (« la table A » : dire « les noms ci-dessus »), ni un nom de calque sans dire ce qu'il montre (« `Frame 2` » : dire « le cadre qui porte l'anneau de focus »). Pendant une étape longue, une ligne dit ce qui se fait.
+- **Ce que le designer lit est en français simple** : il connaît Figma, pas les rouages d'Ariane. Jamais le nom d'un outil interne (lecture fixe, sonde, jointure, passe numérotée), ni d'une partie de récapitulatif par sa lettre (« la table A » : dire « les noms ci-dessus »), ni un nom de calque sans dire ce qu'il montre (« `Frame 2` » : dire « le cadre qui porte l'anneau de focus »). Pendant une étape longue, une ligne dit ce qui se fait, avec les mots de Figma (« je compare le dessin des copies à celui des originaux ») et jamais par le nom de l'outil qui le fait (« lecture fixe », « script fixe », « vérification fixe », « sonde », « passe ») : ces lignes d'avancement sont celles où le jargon revient le plus.
 - **Ne JAMAIS confondre une porte de validation avec un échec.** Le « GO » et le lot de questions de describe, comme les arbitrages de layers et props, sont des **points de décision** : l'orchestrateur attend, il ne diagnostique pas un blocage.
 - **AUCUNE liberté sur les règles de nommage ni de rédaction** : l'orchestrateur ne décide QUE de la **séquence** et de la **cible** (prod vs composants). Tout jugement de nom appartient aux deux skills de renommage ; tout jugement de contenu de description appartient à `ariane-describe-components`.
